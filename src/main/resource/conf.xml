@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--注册监听-->
+    <bean id="testListener" class="com.redwall.eventListener.Listener"/>
+
+    <!--注册转换器-->
+    <!--在afterPropertiesSet()方法中初始化-->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters ">
+            <list>
+                <bean class="com.redwall.conversionService.String2DateConverter"></bean>
+            </list>
+        </property>
+    </bean>
+
+    <aop:aspectj-autoproxy/>
+
+</beans>
+

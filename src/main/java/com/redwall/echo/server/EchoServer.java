@@ -1,4 +1,4 @@
-package com.redwall.echo;
+package com.redwall.echo.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -49,7 +49,7 @@ public class EchoServer {
     }
 
     public void start() throws Exception {
-        final EchoServerHandler serverHandler = new EchoServerHandler();
+        final EchoServerHandler echoServerHandler = new EchoServerHandler();
         //创建 EventLoopGroup
         EventLoopGroup group = new NioEventLoopGroup();
         try {
@@ -65,7 +65,7 @@ public class EchoServer {
                         @Override
                         protected void initChannel(SocketChannel channel) throws Exception {
                             //EchoServerHandler 被注解为@Sharable，所以可以一直使用同样的实例
-                            channel.pipeline().addLast(serverHandler);
+                            channel.pipeline().addLast(echoServerHandler);
                         }
                     });
             //  异步绑定服务器

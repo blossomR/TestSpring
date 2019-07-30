@@ -1,4 +1,4 @@
-package com.redwall.echo;
+package com.redwall.echo.server;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

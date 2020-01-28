@@ -40,5 +40,6 @@
 
     <mappers>
         <mapper resource="mapper/sqlMap.xml"/>
+        <mapper resource="mapper/userDaoMap.xml"/>
     </mappers>
 </configuration>

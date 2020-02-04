@@ -48,6 +48,9 @@
         <mapper resource="mapper/sqlMap.xml"/>
         <mapper resource="mapper/userDaoMap.xml"/>
         <mapper resource="mapper/userMapper.xml"/>
+
+        <!--注解方式可以使用如下配置方式-->
+        <mapper class="com.redwall.mybatis.mapper.UserMapper" />
     </mappers>
     
 

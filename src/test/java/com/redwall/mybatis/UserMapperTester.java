@@ -89,4 +89,13 @@ public class UserMapperTester {
     public void testDeleteUserById() {
         this.userMapper.deleteUserById(1L);
     }
+
+    @Test
+    public void testPackageQuery(){
+        User user1 = this.userMapper.queryUserByName1("hong");
+        System.out.println(user1);
+        //queryUserByName2 使用的是${}占位符,必須使用'',否則會報錯
+        User user2 =  this.userMapper.queryUserByName2("hong");
+        System.out.println(user2);
+    }
 }

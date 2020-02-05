@@ -8,38 +8,40 @@
 
     <properties>
         <property name="driver" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://127.0.0.1:3306/mybatis-110?useUnicode=true&amp;characterEncoding=utf-8&amp;allowMultiQueries=true"/>
+        <property name="url"
+                  value="jdbc:mysql://127.0.0.1:3306/mybatis-110?useUnicode=true&amp;characterEncoding=utf-8&amp;allowMultiQueries=true"/>
         <property name="username" value="root"/>
         <property name="password" value="123456"/>
     </properties>
 
-    <settings>
-        <setting name="mapUnderscoreToCamelCase" value="true" />
-    </settings>
 
     <!-- 环境，可以配置多个，default：指定采用哪个环境 -->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
     <environments default="test">
         <!-- id：唯一标识 -->
         <environment id="test">
             <!-- 事务管理器，JDBC类型的事务管理器 -->
-            <transactionManager type="JDBC" />
+            <transactionManager type="JDBC"/>
             <!-- 数据源，池类型的数据源 -->
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver" />
-                <property name="url" value="jdbc:mysql://127.0.0.1:3306/redwall" />
-                <property name="username" value="root" />
-                <property name="password" value="1234" />
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://127.0.0.1:3306/redwall"/>
+                <property name="username" value="root"/>
+                <property name="password" value="1234"/>
             </dataSource>
         </environment>
         <environment id="development">
             <!-- 事务管理器，JDBC类型的事务管理器 -->
-            <transactionManager type="JDBC" />
+            <transactionManager type="JDBC"/>
             <!-- 数据源，池类型的数据源 -->
             <dataSource type="POOLED">
-                <property name="driver" value="${driver}" /> <!-- 配置了properties，所以可以直接引用 -->
-                <property name="url" value="${url}" />
-                <property name="username" value="${username}" />
-                <property name="password" value="${password}" />
+                <property name="driver" value="${driver}"/> <!-- 配置了properties，所以可以直接引用 -->
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
             </dataSource>
         </environment>
     </environments>
@@ -48,10 +50,12 @@
         <mapper resource="mapper/sqlMap.xml"/>
         <mapper resource="mapper/userDaoMap.xml"/>
         <mapper resource="mapper/userMapper.xml"/>
+        <mapper resource="mapper/PackageMapper.xml"/>
 
-        <!--注解方式可以使用如下配置方式-->
-        <mapper class="com.redwall.mybatis.mapper.UserMapper" />
+
+        <!-- 使用package的方式-->
+<!--        <package name="com.redwall.mybatis.mapper"/>-->
     </mappers>
-    
+
 
 </configuration>

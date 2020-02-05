@@ -58,4 +58,9 @@ public interface UserMapper {
      * @param id
      */
     public void deleteUserById(Long id);
+
+
+    User queryUserByName1(@Param("username1") String username);
+
+    User queryUserByName2(@Param("username2") String username2);
 }

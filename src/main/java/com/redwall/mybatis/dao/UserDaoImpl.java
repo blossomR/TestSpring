@@ -1,6 +1,7 @@
 package com.redwall.mybatis.dao;
 
 import com.redwall.mybatis.User;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
@@ -37,4 +38,7 @@ public class UserDaoImpl implements UserDao {
     public void deleteUser(String id) {
         this.sqlSession.delete("UserDao.deleteUser", id);
     }
+
+
+
 }

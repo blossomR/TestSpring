@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-interface UserMapper {
+public interface UserMapper {
     /**
      * 登录（直接使用注解指定传入参数名称）
      *

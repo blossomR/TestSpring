@@ -90,6 +90,6 @@ public class User {
 
     @Override
     public String toString() {
-        return JSONObject.toJSONString(this);
+        return JSONObject.toJSONString(this)+"\n";
     }
 }

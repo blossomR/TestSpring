@@ -6,7 +6,7 @@ import org.springframework.beans.factory.*;
 public class Person implements BeanFactoryAware, BeanNameAware, InitializingBean, DisposableBean {
 
     public Person() {
-        System.out.println("这是构造器");
+        System.out.println("bean 的这是构造器");
     }
 
     private String name;

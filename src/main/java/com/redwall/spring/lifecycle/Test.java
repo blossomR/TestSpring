@@ -3,7 +3,7 @@ package com.redwall.spring.lifecycle;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class TestLifeCycle {
+public class Test {
     public static void main(String[] args) {
 
         System.out.println("现在开始初始化容器");

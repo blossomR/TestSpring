@@ -21,7 +21,7 @@ public class PassPoint {
         String[] arrys = str.split(" ");
         List<Integer> list = new ArrayList<>();
         int count = arrys.length;
-        int maxUnpassIndex = (int) ((count*0.4)/1)-1;
+        int maxUnpassIndex = (int) ((count * 0.4) / 1) - 1;
 
         for (int i = 0; i < count; i++) {
             list.add(Integer.parseInt(arrys[i]));
@@ -29,16 +29,17 @@ public class PassPoint {
         //升序排序
         Collections.sort(list);
 
-        if(list.get(0)>=60){
+        if (list.get(0) >= 60) {
             System.out.println(60);
             return;
         }
 
-        if(list.get(maxUnpassIndex)<60){
-            System.out.println(("最高分数线: "+(list.get(maxUnpassIndex+1)-list.get(maxUnpassIndex+1)%10)));
-            System.out.println(("最低分数线: "+(list.get(maxUnpassIndex)-list.get(maxUnpassIndex)%10+10)));
+        if (list.get(maxUnpassIndex) < 60) {
+
+            System.out.println("最高分数线: " + calcPassPoint(list, maxUnpassIndex + 1));
+            System.out.println("最低分数线: " + (calcPassPoint(list, maxUnpassIndex) + 10));
             return;
-        }else{
+        } else {
             System.out.println("60");
         }
 
@@ -50,5 +51,10 @@ public class PassPoint {
             i++;
         }
         return i;
+    }
+
+    public static int calcPassPoint(List<Integer> list, int index) {
+        int result = list.get(index) - list.get(index) % 10;
+        return result > 60 ? 60 : result;
     }
 }

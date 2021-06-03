@@ -2,39 +2,56 @@ package leetco.test;
 
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
- * 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+ * 给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。
+ * <p>
+ * 请你将两个数相加，并以相同形式返回一个表示和的链表。
+ * <p>
+ * 你可以假设除了数字 0 之外，这两个数都不会以 0 开头。
  */
 public class Solution_02 {
+
     @Test
     public void tester() {
-        System.out.println(lengthOfLongestSubstring("pwwkew"));//3 kew/kew
-        System.out.println(lengthOfLongestSubstring("abcabcbb"));//3
-        System.out.println(lengthOfLongestSubstring("dvdf"));//3
     }
 
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode root = new ListNode(0);
+        ListNode cursor = root;
+        int carry = 0;
+        while (l1 != null || l2 != null || carry != 0) {
+            int l1Val = l1 != null ? l1.val : 0;
+            int l2Val = l2 != null ? l2.val : 0;
+            int sumVal = l1Val + l2Val + carry;
+            carry = sumVal / 10;
 
-    public int lengthOfLongestSubstring(String s) {
-        int maxLen = 0;
-        int start = 0;
-        // 定义一个 map 数据结构存储 (k, v)，其中 key 值为字符，value 值为字符位置 +1，+1 表示从字符位置后一个才开始不重复
-        Map<Character, Integer> map = new HashMap<>();
-        // 我们定义不重复子串的开始位置为 start，结束位置为 i
-        for (int end = 0; end < s.length(); end++) {
-            char ch = s.charAt(end);
-            // 随着 end 不断遍历向后，会遇到与 [start, end] 区间内字符相同的情况，
-            // 此时将字符作为 key 值，获取其 value 值，并更新 start，
-            // 此时 [start, end] 区间内不存在重复字符
-            if (map.containsKey(ch)) {
-                start = Math.max(map.get(ch), start);
-            }
-            // 无论是否更新 start，都会更新其 map 数据结构和结果 maxLen
-            maxLen = Math.max(maxLen, end + 1 - start);
-            map.put(ch, end + 1);
+            ListNode sumNode = new ListNode(sumVal % 10);
+            cursor.next = sumNode;
+            cursor = sumNode;
+
+            if (l1 != null) l1 = l1.next;
+            if (l2 != null) l2 = l2.next;
         }
-        return maxLen;
+
+        return root.next;
+    }
+
+    static class ListNode {
+
+        private int val;
+
+        private ListNode next;
+
+        public ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        public ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
     }
 }
